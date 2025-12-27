@@ -1,0 +1,133 @@
+
+.header-container {
+  background-color: var(--accent-teal);
+  color: white;
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1000;
+  
+  /* Reset navbar override if it leaks */
+  &.navbar {
+    background: var(--accent-teal);
+    backdrop-filter: none;
+    position: relative; /* Not fixed anymore? User screenshot implies a solid banner */
+    border-bottom: none;
+  }
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  color: white;
+  text-transform: none;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+  
+  span {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+}
+
+.header-center {
+  display: none;
+  
+  @media (min-width: 1024px) {
+    display: flex;
+    gap: 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 1.5rem; /* Align to bottom like screenshot */
+  }
+}
+
+.header-link {
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  position: relative;
+  
+  &::after {
+    content: '▾';
+    font-size: 0.8em;
+    margin-left: 4px;
+    opacity: 0.7;
+  }
+  
+  &:hover {
+    color: rgba(255,255,255,0.9);
+  }
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.header-utility-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 0.2rem;
+  
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.header-search-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    background: white;
+    bottom: -4px;
+    right: -2px;
+    transform: rotate(-45deg);
+  }
+}
+
+.header-button {
+  background-color: var(--accent-red) !important;
+  color: white !important;
+  padding: 0.4rem 1.2rem !important;
+  border-radius: 4px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  border: 1px solid white !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  
+  &:hover {
+    background-color: var(--accent-red-dim) !important;
+  }
+}
