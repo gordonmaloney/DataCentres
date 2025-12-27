@@ -17,7 +17,7 @@ import {
   Radio,
 } from "@mui/material";
 import { SendModal } from "./SendModal";
-import { BtnStyle, CheckBoxStyle, TextFieldStyle } from "../../../MUIStyles";
+import { BtnStyle, CheckBoxStyle, TextFieldStyle, PaperStyle, LabelStyle } from "../../../MUIStyles";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ScrollToTop from "../../components/ScrollToTop";
@@ -186,48 +186,31 @@ const Mailer = ({
       {/* Messaging */}
       <Box
         sx={{
-          position: "relative",
-          marginTop: 2,
+          marginTop: 4,
           marginBottom: "14px",
-
           width: "100%",
-          "&:focus-within .paperBorder": {
-            outline: "2px solid #3f51b5", // Color for focus state
-            outlineOffset: "-2px",
-          },
+          position: "relative"
         }}
       >
         <label
           style={{
+            ...LabelStyle,
             position: "absolute",
-            top: "-9px",
-            left: "8px",
-            fontSize: "0.78rem",
-            fontWeight: "320",
-            color: "rgba(0,0,0,0.3)",
-            backgroundColor: "white",
-            padding: "0 5px",
-            transition: "top 0.2s, font-size 0.2s, color 0.2s",
+            top: "-1.8rem",
           }}
         >
           To
         </label>
 
         <Paper
-          sx={{
-            ...TextFieldStyle,
-            margin: "1px 0 7px 0",
-            padding: "5px",
-            paddingY: "15px",
-            border: "1px solid lightgray",
-          }}
+          sx={PaperStyle}
         >
           {messaging.map((msp) => (
             <Chip
               key={msp.name}
               label={`${msp.name} ${msp.party ? `- ${msp.party}` : ""}`}
               variant="outlined"
-              sx={{ margin: "2px" }}
+              sx={{ margin: "2px", borderRadius: "8px" }}
               onClick={() => {
                 setMessaging((prev) =>
                   prev.filter((prevTarget) => prevTarget.name !== msp.name)
@@ -336,48 +319,31 @@ const Mailer = ({
       {/* BCCing */}
       <Box
         sx={{
-          position: "relative",
-          marginTop: 2,
+          marginTop: 4,
           marginBottom: "14px",
-
           width: "100%",
-          "&:focus-within .paperBorder": {
-            outline: "2px solid #3f51b5", // Color for focus state
-            outlineOffset: "-2px",
-          },
+          position: "relative"
         }}
       >
         <label
           style={{
+            ...LabelStyle,
             position: "absolute",
-            top: "-9px",
-            left: "8px",
-            fontSize: "0.78rem",
-            fontWeight: "320",
-            color: "rgba(0,0,0,0.3)",
-            backgroundColor: "white",
-            padding: "0 5px",
-            transition: "top 0.2s, font-size 0.2s, color 0.2s",
+            top: "-1.8rem",
           }}
         >
           BCC
         </label>
 
         <Paper
-          sx={{
-            ...TextFieldStyle,
-            margin: "1px 0 7px 0",
-            padding: "5px",
-            paddingY: "15px",
-            border: "1px solid lightgray",
-          }}
+          sx={PaperStyle}
         >
           {copyIn ? (
             <Chip
               key={"livingrent"}
               label={`Action to Protect Rural Scotland`}
               variant="outlined"
-              sx={{ margin: "2px" }}
+              sx={{ margin: "2px", borderRadius: "8px" }}
               onClick={() => {
                 handleUnBcc();
               }}

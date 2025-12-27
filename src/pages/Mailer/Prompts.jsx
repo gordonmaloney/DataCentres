@@ -102,6 +102,7 @@ const Prompts = ({ issue, blankTemplate }) => {
           variant="outlined"
           value={userName}
           sx={TextFieldStyle}
+          InputLabelProps={{ shrink: true }}
           onChange={(e) => setUserName(e.target.value)}
           fullWidth
         />
@@ -111,6 +112,7 @@ const Prompts = ({ issue, blankTemplate }) => {
           variant="outlined"
           value={userStory}
           sx={TextFieldStyle}
+          InputLabelProps={{ shrink: true }}
           onChange={(e) => setUserStory(e.target.value)}
           multiline
           rows={4}

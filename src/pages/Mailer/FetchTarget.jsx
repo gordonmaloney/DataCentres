@@ -144,6 +144,7 @@ const FetchTarget = ({
         placeholder="Your postcode..."
         sx={TextFieldStyle}
         fullWidth
+        InputLabelProps={{ shrink: true }}
         autoComplete="postal-code"
         value={postcode}
         onChange={(e) => setPostcode(e.target.value)}

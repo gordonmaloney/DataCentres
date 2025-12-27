@@ -112,29 +112,79 @@ export const CheckBoxStyle = {
 };
 
 export const TextFieldStyle = {
-  backgroundColor: "white",
-  color: 'black',
-  marginBottom: "12px",
-  marginTop: "3px",
-  "& label.Mui-focused": {
-    color: "var(--textfield-outline)",
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "var(--textfield-outline)",
-  },
-  "& .MuiFilledInput-underline:after": {
-    borderBottomColor: "var(--textfield-outline)",
-  },
+  marginBottom: "2rem",
+  marginTop: "1.5rem",
+  boxSizing: "border-box",
   "& .MuiOutlinedInput-root": {
-    "&.Mui-focused fieldset": {
-      borderColor: "var(--textfield-outline)",
+    backgroundColor: "white",
+    borderRadius: "12px",
+    transition: "box-shadow 0.2s ease-in-out",
+    "& fieldset": {
+      borderRadius: "12px",
+      borderColor: "var(--textfield-border)",
+      borderWidth: "2px",
+      transition: "border-color 0.2s ease-in-out",
+      top: 0, // Reset default MUI offsets that can cause gaps
     },
-    "& .MuiSelect-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "var(--textfield-outline)",
+    "&:hover fieldset": {
+      borderColor: "var(--textfield-border)",
+    },
+    "&.Mui-focused": {
+      boxShadow: "0 0 0 4px var(--accent-glow)",
+      "& fieldset": {
+        borderColor: "var(--textfield-outline) !important",
+        borderWidth: "2px",
       },
     },
+    "& input": {
+      padding: "14px 16px",
+      fontSize: "1rem",
+    },
   },
+  "& .MuiInputLabel-root": {
+    color: "var(--text-secondary)",
+    fontFamily: "var(--font-main)",
+    fontSize: "1.1rem",
+    fontWeight: "600",
+    transform: "translate(0, -1.8rem) scale(1)",
+    transformOrigin: "top left",
+    "&.Mui-focused": {
+      color: "var(--text-primary)",
+    },
+    "&.MuiInputLabel-shrink": {
+      transform: "translate(0, -1.8rem) scale(0.9)",
+    },
+  },
+  "& .MuiOutlinedInput-notchedOutline": {
+    borderRadius: "12px",
+    "& legend": {
+      display: "none",
+    },
+  },
+};
+
+export const PaperStyle = {
+  backgroundColor: "white",
+  borderRadius: "12px",
+  border: "2px solid var(--textfield-border)",
+  padding: "1rem",
+  boxShadow: "none",
+  transition: "all 0.2s ease-in-out",
+  position: "relative",
+  "&:focus-within": {
+    borderColor: "var(--textfield-outline)",
+    boxShadow: "0 0 0 4px var(--accent-glow)",
+  }
+};
+
+export const LabelStyle = {
+  color: "var(--text-secondary)",
+  fontFamily: "var(--font-main)",
+  fontSize: "1.1rem",
+  fontWeight: "600",
+  marginBottom: "0.5rem",
+  display: "block",
+  transform: "translate(0, -0.3rem)",
 };
 
 // StepperStyle.js

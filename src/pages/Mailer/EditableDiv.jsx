@@ -48,38 +48,16 @@ const EditableDiv = ({
 
 
   return (
-    <div style={{ width: "100%" }}>
-      <div
-        style={{
-          marginTop: "10px",
-          padding: "10px",
-          position: "relative",
-          borderRadius: "4px",
-          marginBottom: "12px",
-        }}
-        className="editableDivBox"
-      >
-        <label
-          htmlFor="editableDiv"
-          style={{
-            position: "absolute",
-            top: "-9px",
-            left: "8px",
-            fontSize: "0.78rem",
-            fontWeight: "320",
-            color: "rgb(80,80,80)",
-            backgroundColor: "white",
-            padding: "0 5px",
-          }}
-          className="editableDivBoxLabel"
-        >
+    <div style={{ width: "100%", marginTop: "2rem", position: "relative" }}>
+      <div className="editableDivBox">
+        <label htmlFor="editableDiv" className="editableDivBoxLabel">
           {label}
         </label>
         <div
           style={{
-            outline: "0px solid transparent",
+            outline: "none",
             color: "black",
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontFamily: 'var(--font-main)',
             padding: "5px",
             minHeight: "200px",
             height: "auto",
@@ -91,11 +69,8 @@ const EditableDiv = ({
           autoFocus
           onInput={(e) => setLength(e.target?.innerText.length)}
           onBlur={() => onBodyChange(textFieldRef.current.innerText)}
-        >
-          {body}
-        </div>
+        />
       </div>
-
     </div>
   );
 };

@@ -18,6 +18,9 @@
   --border-dim: rgba(0, 0, 0, 0.1); /* Light border */
   
   --font-main: 'Outfit', sans-serif;
+
+  --textfield-outline: #57B3B3;
+  --textfield-border: #D1D5DB;
 }
 
 body {
@@ -59,15 +62,32 @@ button {
 }
 
 .editableDivBox {
-  outline: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border: 2px solid var(--textfield-border);
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+  padding: 1rem;
 }
 
 .editableDivBox:focus-within {
   box-sizing: border-box;
-  outline: 2px solid rgba(0, 0, 0, 1);
+  border-color: var(--textfield-outline);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+  outline: none;
+}
+
+.editableDivBoxLabel {
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  transform: translate(0, -1.8rem);
+  position: absolute;
+  transition: color 0.2s;
 }
 
 .editableDivBox:focus-within .editableDivBoxLabel {
-  color: black !important;
-  font-weight: 400 !important;
+  color: var(--text-primary) !important;
 }

@@ -18,6 +18,7 @@ const EmailInput = ({ userEmail, setUserEmail, setEmailClient }) => {
       label="Your email"
       placeholder="Your email..."
       sx={TextFieldStyle}
+      InputLabelProps={{ shrink: true }}
       fullWidth
       value={userEmail}
       onChange={(e) => setUserEmail(e.target.value)}
