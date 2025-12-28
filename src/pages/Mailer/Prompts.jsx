@@ -5,6 +5,7 @@ import {
   Button,
   TextField,
   Tooltip,
+  Grid,
 } from "@mui/material";
 import FetchTarget from "./FetchTarget";
 import EmailInput from "./ClientHandling/EmailInput";
@@ -18,7 +19,7 @@ import {
 
 
 
-const Prompts = ({ issue, blankTemplate }) => {
+const Prompts = ({ issue, blankTemplate, initialSubject }) => {
   const location = useLocation();
   const [stage, setStage] = useState("prompts");
 
@@ -84,22 +85,12 @@ const Prompts = ({ issue, blankTemplate }) => {
 
   if (stage === "prompts") {
     return (
-      <div>
-        {issue === "object" && (
-          <>
-          OBJECTIONS
-          </>
-        )}
-
-        {issue === "email" && (
-          <>
-          EMAIL MSPS
-          </>
-        )}
-
+      <div className="teal-card">
+      <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '10px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
         <TextField
           label="Your Name"
           variant="outlined"
+          placeholder="Your name..."
           value={userName}
           sx={TextFieldStyle}
           InputLabelProps={{ shrink: true }}
@@ -110,6 +101,7 @@ const Prompts = ({ issue, blankTemplate }) => {
         <TextField
           label="Your Story"
           variant="outlined"
+          placeholder="Your story..."
           value={userStory}
           sx={TextFieldStyle}
           InputLabelProps={{ shrink: true }}
@@ -133,62 +125,55 @@ const Prompts = ({ issue, blankTemplate }) => {
           setEmailClient={setEmailClient}
         />
 
-
-{/*
-        <TextField
-          label="Your number"
-          variant="outlined"
-          value={userNumber}
-          sx={TextFieldStyle}
-          onChange={(e) => setUserNumber(e.target.value)}
-          fullWidth
-        />
-*/}
-
-        <Tooltip
-          title="Make sure you have filled out all the questions above"
-          open={tooltipOpen}
-          disableHoverListener
-          disableFocusListener
-          disableTouchListener
-          placement="left"
-        >
-          <span style={{ float: "right" }}>
-            <Button
-              sx={fieldsIncomplete ? BtnStyleDisabled : BtnStyle}
-              onClick={() => {
-                if (!fieldsIncomplete) {
-                  handlePrompts();
-                  setStage("message");
-                } else {
-                  handleButtonClick();
-                }
-              }}
-            >
-              Next
-            </Button>
-          </span>
-        </Tooltip>
+        <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'flex-end' }}>
+          <Tooltip
+            title="Make sure you have filled out all the questions above"
+            open={tooltipOpen}
+            disableHoverListener
+            disableFocusListener
+            disableTouchListener
+            placement="left"
+          >
+            <span>
+              <Button
+                sx={fieldsIncomplete ? BtnStyleDisabled : BtnStyle}
+                onClick={() => {
+                  if (!fieldsIncomplete) {
+                    handlePrompts();
+                    setStage("message");
+                  } else {
+                    handleButtonClick();
+                  }
+                }}
+              >
+                Next
+              </Button>
+            </span>
+          </Tooltip>
+        </div>
+      </div>
       </div>
     );
   }
 
   if (stage === "message") {
     return (
-      <div>
-        <Mailer
-          template={template}
-          setTemplate={setTemplate}
-          answers={answers}
-          noClient={noClient}
-          setNoClient={setNoClient}
-          emailClient={emailClient}
-          issue={issue}
-          setStage={setStage}
-          adminDivisions={adminDivisions}
-          contactDetails={contactDetails}
-        />
-      </div>
+      <div className="teal-card">
+      <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '10px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
+      <Mailer
+        template={template}
+        setTemplate={setTemplate}
+        answers={answers}
+        noClient={noClient}
+        setNoClient={setNoClient}
+        emailClient={emailClient}
+        issue={issue}
+        setStage={setStage}
+        adminDivisions={adminDivisions}
+        contactDetails={contactDetails}
+        initialSubject={initialSubject}
+      />
+      </div></div>
     );
   }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sketched Cross Effect using multiple slightly offset paths -->
+  <g stroke="#BB2649" fill="none" stroke-linecap="round">
+    <path d="M40 40 Q 45 45, 160 160" stroke-width="18" />
+    <path d="M42 38 Q 47 43, 162 158" stroke-width="6" opacity="0.6" />
+    
+    <path d="M160 40 Q 155 45, 40 160" stroke-width="18" />
+    <path d="M158 38 Q 153 43, 38 158" stroke-width="6" opacity="0.6" />
+  </g>
+</svg>

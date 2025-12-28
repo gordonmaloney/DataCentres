@@ -37,6 +37,17 @@ body {
   box-sizing: border-box;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #F0F9F9 inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
@@ -90,4 +101,9 @@ button {
 
 .editableDivBox:focus-within .editableDivBoxLabel {
   color: var(--text-primary) !important;
+}
+
+.teal-card {
+  background-color: var(--accent-teal); 
+  padding: 20px;
 }

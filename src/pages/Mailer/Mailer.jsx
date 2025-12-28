@@ -15,9 +15,11 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
+  TextField,
+  CircularProgress,
 } from "@mui/material";
 import { SendModal } from "./SendModal";
-import { BtnStyle, CheckBoxStyle, TextFieldStyle, PaperStyle, LabelStyle } from "../../../MUIStyles";
+import { BtnStyle, CheckBoxStyle, TextFieldStyle, PaperStyle, LabelStyle, ChipStyle } from "../../../MUIStyles";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ScrollToTop from "../../components/ScrollToTop";
@@ -32,19 +34,19 @@ const Mailer = ({
   setStage,
   adminDivisions,
   contactDetails,
-  issue
+  issue,
+  initialSubject
 }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
   const [gdprPrompt, setGdprPrompt] = useState(false);
 
+  const [subject, setSubject] = useState(initialSubject || "Requesting support");
   const [sent, setSent] = useState(false);
 
   const Mobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
-  let SL = "Requesting support with my housing issue";
-
-  let title = "Demand Edinburgh Council stand up for tenants";
+  let title = "Stop Data Centres";
 
   let bcc = "edinburgh@livingrent.org";
 
@@ -163,10 +165,6 @@ const Mailer = ({
     return <>Loading...</>;
   }
 
-  if (loading) {
-    return <div style={{ padding: "2rem", textAlign: "center" }}>Loading representatives...</div>;
-  }
-
   if (errorMsg) {
     return <div style={{ padding: "2rem", textAlign: "center", color: "red" }}>Error: {errorMsg}</div>;
   }
@@ -193,11 +191,7 @@ const Mailer = ({
         }}
       >
         <label
-          style={{
-            ...LabelStyle,
-            position: "absolute",
-            top: "-1.8rem",
-          }}
+          style={LabelStyle}
         >
           To
         </label>
@@ -210,7 +204,7 @@ const Mailer = ({
               key={msp.name}
               label={`${msp.name} ${msp.party ? `- ${msp.party}` : ""}`}
               variant="outlined"
-              sx={{ margin: "2px", borderRadius: "8px" }}
+              sx={ChipStyle}
               onClick={() => {
                 setMessaging((prev) =>
                   prev.filter((prevTarget) => prevTarget.name !== msp.name)
@@ -226,7 +220,12 @@ const Mailer = ({
             ></Chip>
           ))}
 
-          {messaging.length == 0 && (
+          {loading ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingLeft: '8px', color: 'var(--text-secondary)' }}>
+              <CircularProgress size={18} sx={{ color: 'var(--accent-teal)' }} />
+              <span style={{ fontSize: '0.9rem' }}>Fetching recipients...</span>
+            </div>
+          ) : messaging.length == 0 && (
             <div style={{ color: "red", marginLeft: "10px" }}>
               You need to pick at least one recipient!
             </div>
@@ -238,6 +237,7 @@ const Mailer = ({
             <div
               style={{
                 marginBottom: "5px",
+                marginTop: "5px",
               }}
             >
               <Accordion
@@ -248,7 +248,7 @@ const Mailer = ({
                 }}
               >
                 <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
+                  expandIcon={<ExpandMoreIcon sx={{ color: 'black' }} />}
                   aria-controls="panel1a-content"
                   id="details"
                   sx={{
@@ -261,6 +261,8 @@ const Mailer = ({
                   <div
                     style={{
                       color: "black",
+                      fontWeight: "400",
+                      fontSize: "1rem"
                     }}
                   >
                     You aren't messaging:
@@ -276,20 +278,19 @@ const Mailer = ({
                     border: "1px solid lightgray",
                   }}
                 >
-                  <div style={{ marginLeft: "5px" }}>
+                  <div style={{ marginLeft: "5px", color: "black", fontSize: "0.8rem", marginBottom: '4px' }}>
                     These are the recipients not included in your message. If
                     you'd like to include them, just tap their name.
                   </div>
-                  <br />
                   {notMessaging.map((msp) => (
                     <Chip
                       key={msp.name}
                       size="small"
                       label={`${msp.name} ${msp.party ? `- ${msp.party}` : ""}`}
                       variant="outlined"
-                      sx={{ backgroundColor: "white", margin: "2px" }}
+                      sx={ChipStyle}
                       deleteIcon={
-                        <AddCircleIcon style={{ fontSize: "large" }} />
+                        <AddCircleIcon style={{ fontSize: "large", color: 'var(--textfield-outline)' }} />
                       }
                       onDelete={() => {
                         setNotMessaging((prev) =>
@@ -326,11 +327,7 @@ const Mailer = ({
         }}
       >
         <label
-          style={{
-            ...LabelStyle,
-            position: "absolute",
-            top: "-1.8rem",
-          }}
+          style={LabelStyle}
         >
           BCC
         </label>
@@ -343,7 +340,7 @@ const Mailer = ({
               key={"livingrent"}
               label={`Action to Protect Rural Scotland`}
               variant="outlined"
-              sx={{ margin: "2px", borderRadius: "8px" }}
+              sx={ChipStyle}
               onClick={() => {
                 handleUnBcc();
               }}
@@ -353,7 +350,7 @@ const Mailer = ({
             />
           ) : (
             <span
-            style={{marginLeft: "10px", fontStyle: "italic"}}
+            style={{marginLeft: "10px", fontStyle: "italic", color: "black", display: "inline-block"}}
             >
               Are you sure? By copying Action to Protect Rural Scotland in, your story can help shape our campaign.{" "}
               <span onClick={() => setCopyIn(true)}
@@ -366,6 +363,17 @@ const Mailer = ({
         </Paper>
       </Box>
 
+    
+        <TextField
+                 label="Subject line"
+          variant="outlined"
+         fullWidth
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          sx={TextFieldStyle}
+          InputLabelProps={{ shrink: true }}
+        />
+
       <EditableDiv
         label="Your message"
         body={template}
@@ -373,8 +381,9 @@ const Mailer = ({
         onBodyChange={(e) => setTemplate(e)}
         promptsChanged={answers}
       />
+      
       <div
-        style={{ marginTop: "-10px", fontSize: "small", textAlign: "center" }}
+        style={{ marginTop: "4px",fontSize: "small", textAlign: "center", color: 'black' }}
       >
         <em>
           Your answers have been incorporated into the template message,
@@ -453,7 +462,7 @@ const Mailer = ({
         setNoClient={setNoClient}
         messaging={messaging}
         bcc={bcc}
-        SL={SL}
+        SL={subject}
         body={template}
         Mobile={Mobile}
         sent={sent}

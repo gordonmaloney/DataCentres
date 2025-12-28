@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Landing from './pages/landing/Landing'
 import ObjectPage from './pages/object/Object'
 import EmailMSPs from './pages/email/EmailMSPs'
+import About from './pages/about/About'
 import './App.scss'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/object" element={<ObjectPage />} />
           <Route path="/email-msps" element={<EmailMSPs />} />
+          <Route path="/about" element={<About />} />
         </Routes>
 
       </div>

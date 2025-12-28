@@ -32,12 +32,15 @@
   overflow: hidden;
   position: relative;
   
-  /* Inherits display: flex from .landing-section, but we need formatting */
+  /* Mobile: Center everything */
+  align-items: center;
+  text-align: center;
   justify-content: flex-start;
   
   @media (min-width: 1024px) {
     flex-direction: row; /* Horizontal on desktop */
     align-items: center;
+    text-align: left;
     justify-content: space-between;
     padding: 6rem 5%;
     gap: 3rem;
@@ -100,6 +103,9 @@
   max-width: 600px;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centered everywhere as requested */
 }
 
 .title-wrapper {
@@ -142,6 +148,7 @@
   text-shadow: 2px 2px 14px rgba(0,0,0,0.5);
   margin: 0;
   position: relative;
+  top: -0.2em; /* Nudge text up to balance with brush stroke */
   width: 100%;
   word-wrap: break-word;
 }
@@ -163,9 +170,10 @@
 .landing-text {
   font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: 500;
   color: #333;
+  text-align: center; /* Consistent centering */
 }
 
 .cta-wrapper {
@@ -181,7 +189,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 120%;
-  height: 140%;
+  height: 120%;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: -1;
@@ -190,11 +198,11 @@
 
 .cta-brush-btn {
   font-family: 'Outfit', sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  font-size: 1.6rem !important; /* Slightly bigger text */
   color: white !important;
   text-transform: none !important;
-  padding: 0.5rem 2rem !important;
+  padding: 0.6rem 2.5rem !important;
   
   &:hover {
     background: transparent !important;
@@ -205,12 +213,6 @@
   transform: translate(-50%, -50%) scale(1.05);
 }
 
-.supporter-count {
-  font-size: 0.9rem;
-  color: #666;
-  margin-left: 0.5rem;
-  font-style: italic;
-}
 
 .landing-visual {
   flex: 1;
@@ -218,6 +220,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  max-width: 600px;
   
   &::before {
     content: '';

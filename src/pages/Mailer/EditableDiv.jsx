@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { LabelStyle } from "../../../MUIStyles";
 
 //LOOK I KNOW THIS WHOLE COMPONENT IS BANANAS BUT IT WORKS SO DON'T CHANGE IT WITHOUT BEING VERY CAREFUL
 
@@ -10,6 +11,7 @@ const EditableDiv = ({
   promptsChanged,
 }) => {
   const textFieldRef = useRef();
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     const textField = textFieldRef.current;
@@ -48,9 +50,15 @@ const EditableDiv = ({
 
 
   return (
-    <div style={{ width: "100%", marginTop: "2rem", position: "relative" }}>
+    <div style={{ width: "100%", marginTop: "0.5rem", position: "relative" }}>
       <div className="editableDivBox">
-        <label htmlFor="editableDiv" className="editableDivBoxLabel">
+        <label 
+          htmlFor="editableDiv" 
+          style={{
+            ...LabelStyle,
+            color: isFocused ? 'var(--text-primary)' : 'var(--text-secondary)'
+          }}
+        >
           {label}
         </label>
         <div
@@ -68,8 +76,14 @@ const EditableDiv = ({
           suppressContentEditableWarning={true}
           autoFocus
           onInput={(e) => setLength(e.target?.innerText.length)}
-          onBlur={() => onBodyChange(textFieldRef.current.innerText)}
-        />
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => {
+            setIsFocused(false);
+            onBodyChange(textFieldRef.current.innerText);
+          }}
+        >
+          {body}
+        </div>
       </div>
     </div>
   );

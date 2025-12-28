@@ -36,6 +36,7 @@
   letter-spacing: -0.5px;
   background: linear-gradient(to right, var(--accent-teal), #000);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -120,6 +121,7 @@
   animation: slideUp 0.8s ease-out;
   background: linear-gradient(180deg, #fff 0%, #a0a0a0 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -209,3 +211,12 @@
   opacity: 0.1;
   z-index: -1;
 }
+
+/* Map Markers */
+.map-marker-icon {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+

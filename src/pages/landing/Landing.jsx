@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
 import { useStore } from '../../store/useStore'
-import redBrush from '../../assets/red_brush.png'
+import ctaBrush from '../../assets/cta_brush.png'
 import ScotlandMap from '../../components/ScotlandMap'
 import './Landing.scss'
 import TakeAction from './TakeAction'
@@ -19,6 +19,8 @@ export default function Landing() {
   return (
     <main className="landing-snap-wrapper">
       <section className="landing-container landing-section">
+
+        
         <div className="landing-content">
 
 
@@ -29,19 +31,17 @@ export default function Landing() {
             </p>
             
 
-            <center>
             <div className="cta-wrapper">
-
-                <div className="brush-btn-bg" style={{ backgroundImage: `url(${redBrush})` }}></div>
-                <Button 
-                    onClick={scrollToActions}
-                    className="cta-brush-btn"
-                    disableRipple
-                >
-                    Take action now
-                </Button>
-
-            </div></center>
+              
+              <div className="brush-btn-bg" style={{ backgroundImage: `url(${ctaBrush})` }}></div>
+              <Button 
+                onClick={scrollToActions}
+                className="cta-brush-btn"
+                disableRipple
+              >
+                Take action now
+              </Button>
+            </div>
             
         </div>
         

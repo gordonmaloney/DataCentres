@@ -136,9 +136,23 @@ export const TextFieldStyle = {
         borderWidth: "2px",
       },
     },
-    "& input": {
-      padding: "14px 16px",
+    "& .MuiInputBase-input": {
       fontSize: "1rem",
+      color: "black",
+      "&:-webkit-autofill": {
+        WebkitBoxShadow: "0 0 0 100px #F0F9F9 inset !important", // Soft teal background
+        WebkitTextFillColor: "var(--text-primary) !important",
+        borderRadius: "inherit",
+      },
+    },
+    "& input.MuiInputBase-input": {
+      padding: "14px 16px",
+    },
+    "& textarea.MuiInputBase-input": {
+      padding: 0,
+    },
+    "&.MuiOutlinedInput-multiline": {
+      padding: "14px 16px",
     },
   },
   "& .MuiInputLabel-root": {
@@ -182,9 +196,31 @@ export const LabelStyle = {
   fontFamily: "var(--font-main)",
   fontSize: "1.1rem",
   fontWeight: "600",
-  marginBottom: "0.5rem",
-  display: "block",
-  transform: "translate(0, -0.3rem)",
+  position: "absolute",
+  top: 0,
+  left: 0,
+  transform: "translate(0, -1.8rem)",
+  pointerEvents: "none",
+  transition: "color 0.2s ease-in-out",
+};
+
+export const ChipStyle = {
+  color: "black",
+  borderColor: "var(--textfield-outline) !important",
+  borderWidth: "1.5px",
+  fontWeight: "500",
+  borderRadius: "8px",
+  backgroundColor: "white",
+  margin: "2px",
+  "&:hover": {
+    backgroundColor: "rgba(15, 113, 115, 0.04)",
+  },
+  "& .MuiChip-deleteIcon": {
+    color: "var(--accent-red)",
+    "&:hover": {
+      color: "var(--accent-red-dim)",
+    },
+  },
 };
 
 // StepperStyle.js
