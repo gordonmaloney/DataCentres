@@ -26,7 +26,7 @@
 /* HERO SECTION */
 .landing-container {
   flex-direction: column;
-  padding: 8rem 2rem 2rem;
+  padding: 1.5rem 0 2rem; /* Mobile: Tight gap, full-width look */
   background-color: white; 
   color: #111;
   overflow: hidden;
@@ -42,7 +42,7 @@
     align-items: center;
     text-align: left;
     justify-content: space-between;
-    padding: 6rem 5%;
+    padding: 6rem 5% 6rem; /* Restored desktop padding */
     gap: 3rem;
     
     background-color: #fff; /* Ensure it has bg */
@@ -100,6 +100,7 @@
 
 .landing-content {
   flex: 1;
+  width: 100%; /* Ensure container fills parent width */
   max-width: 600px;
   position: relative;
   z-index: 2;
@@ -117,13 +118,17 @@
   margin-left: auto;
   margin-right: auto;
   
-  /* Flexible height, fixed width constraints */
+  /* Mobile: full-width stroke, Organically tall */
   width: 100%;
-  padding: 5rem 2rem; /* Vertical padding provides the "height" organically */
+  padding: 6.5rem 0; 
   overflow: hidden; 
   
   box-sizing: border-box;
   container-type: inline-size;
+
+  @media (min-width: 1024px) {
+    padding: 5rem 2rem; /* Re-add side padding on desktop */
+  }
 }
 
 .title-text-clipping-wrapper {
@@ -148,7 +153,7 @@
   text-shadow: 2px 2px 14px rgba(0,0,0,0.5);
   margin: 0;
   position: relative;
-  top: -0.2em; /* Nudge text up to balance with brush stroke */
+  top: -0.15em; /* Adjusted slightly to re-center in the thicker stroke */
   width: 100%;
   word-wrap: break-word;
 }
@@ -157,23 +162,35 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  /* Zoom deep into the solid blue center to create a large safe zone */
-  width: 180%; 
-  height: 180%;
-  transform: translate(-50%, -50%) rotate(-1deg);
+  width: 140%; 
+  height: 150%; 
+  /* Mobile: Aggressive scale to thicken the stroke */
+  transform: translate(-50%, -50%) rotate(-1.5deg) scale(1.4, 1.8);
   z-index: -1;
   pointer-events: none;
-  /* Maintain fixed dimensions to avoid squashing */
-  object-fit: cover; 
+  object-fit: contain; 
+
+  @media (min-width: 1024px) {
+    width: 180%;
+    height: 180%;
+    /* Desktop: Standard scale */
+    transform: translate(-50%, -50%) rotate(-1deg);
+    object-fit: cover;
+  }
 }
 
 .landing-text {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
+  padding: 0 2rem; /* Restore readability padding for text only */
   font-weight: 500;
   color: #333;
   text-align: center; /* Consistent centering */
+
+  @media (min-width: 1024px) {
+    padding: 0; /* Reset for desktop where container has padding */
+  }
 }
 
 .cta-wrapper {
@@ -221,6 +238,11 @@
   align-items: center;
   position: relative;
   max-width: 600px;
+  margin-top: 5rem; /* Large gap on mobile */
+
+  @media (min-width: 1024px) {
+    margin-top: 0; /* Reset for desktop */
+  }
   
   &::before {
     content: '';
