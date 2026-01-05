@@ -29,9 +29,9 @@ export default function PostAction() {
       
   return (
     <div>
-         <p>
+         <p style={{ color: "#444", lineHeight: "1.6", fontSize: "1.05rem" }}>
                 Nice one! Will you now{" "}
-                <b>take a moment to share the campaign with a few friends?</b>{" "}
+                <b style={{ color: "#1A1A1A" }}>take a moment to share the campaign with a few friends?</b>{" "}
                 You can use the buttons below:
               </p>
               <div style={{ display: "flex", justifyContent: "space-around" }}>
@@ -64,7 +64,7 @@ export default function PostAction() {
                 </Stack>
               </div>
 
-              <p>
+              <p style={{ color: "#444", lineHeight: "1.6", marginTop: "1rem" }}>
                 You can also just{" "}
                 <Tooltip
                   open={copied}
@@ -88,7 +88,8 @@ export default function PostAction() {
                     onClick={handleCopy}
                     style={{
                       cursor: "pointer",
-                      color: "inherit",
+                      color: "var(--accent-teal)",
+                      fontWeight: 600,
                       textDecoration: "underline",
                     }}
                   >

@@ -14,13 +14,15 @@ const ModalStyle = {
   transform: "translate(-50%, -50%)",
   width: "500px",
   height: "auto",
-  maxWidth: "90vw",
+  maxWidth: "96vw",
   margin: "0 auto",
-  padding: "15px",
-  backgroundColor: "#F6F3F6",
-  borderRadius: "0",
-  border: "1px solid black",
-  backdropFilter: "blur(5px)",
+  padding: "2rem",
+  backgroundColor: "#FFFFFF",
+  borderRadius: "16px",
+  border: "none",
+  boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+  color: "#1A1A1A", // Solid dark text
+  outline: "none",
 };
 
 export const SendModal = ({
@@ -115,17 +117,26 @@ export const SendModal = ({
 
       <Modal open={isOpen} onClose={onClose}>
         <Box style={ModalStyle}>
-          <span style={{ float: "right", cursor: "pointer" }} onClick={onClose}>
+          <span 
+            style={{ float: "right", cursor: "pointer", color: "#666" }} 
+            onClick={onClose}
+          >
             <CloseIcon />
           </span>
 
-          <h1 style={{ margin: "0 0 12px 0" }}>
+          <h1 style={{ 
+            margin: "0 0 1rem 0", 
+            fontFamily: "var(--font-main)", 
+            fontWeight: 800, 
+            fontSize: "2rem",
+            color: "var(--accent-teal)"
+          }}>
             {sent ? "What now?" : "Send your message"}
           </h1>
 
           {noClient ? (
             <>
-              <p>
+              <p style={{ color: "#444", lineHeight: "1.6", fontSize: "1.05rem" }}>
                 If you don't use an email app, or the buttons on the last page
                 didn't work, you can use these buttons to copy and paste the
                 recipients, subject, and body of your email to whatever client
@@ -176,7 +187,7 @@ export const SendModal = ({
             </>
           ) : !sent ? (
             <>
-              <p>
+              <p style={{ color: "#444", lineHeight: "1.6", fontSize: "1.05rem" }}>
                 You're almost there. Press the button below to open your email
                 client, and the message will be pre-filled in there for you.
                 Then just hit send in there to fire it off.

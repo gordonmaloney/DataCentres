@@ -1,4 +1,4 @@
-export const mspEmailTemplate = `Dear MSP,
+export const mspEmailTemplate = `Dear MSPs,
 
 I am writing to you as one of your constituents to express my deep concern regarding the unregulated expansion of data centres in Scotland. 
 

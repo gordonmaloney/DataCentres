@@ -17,6 +17,7 @@ function forceScrollTop(behavior = "auto") {
   elemScroll(document.documentElement);
   elemScroll(document.body);
   elemScroll(document.querySelector("main"));
+  elemScroll(document.querySelector(".main-scroll-container"));
   elemScroll(document.querySelector(".page"));
   elemScroll(document.querySelector("#root"));
 }

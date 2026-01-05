@@ -86,7 +86,7 @@ const Prompts = ({ issue, blankTemplate, initialSubject }) => {
   if (stage === "prompts") {
     return (
       <div className="teal-card">
-      <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '10px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
+      <div className="prompts-inner-card">
         <TextField
           label="Your Name"
           variant="outlined"
@@ -159,7 +159,7 @@ const Prompts = ({ issue, blankTemplate, initialSubject }) => {
   if (stage === "message") {
     return (
       <div className="teal-card">
-      <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '10px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.05)' }}>
+      <div className="prompts-inner-card">
       <Mailer
         template={template}
         setTemplate={setTemplate}

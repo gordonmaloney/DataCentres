@@ -2,7 +2,7 @@
 .header-container {
   background-color: var(--accent-teal);
   color: white;
-  padding: 1rem 5%;
+  padding: 0.6rem 5%; /* Shrunk from 1rem */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,6 +10,10 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   position: relative;
   z-index: 1000;
+  
+  @media (min-width: 1024px) {
+    padding: 1rem 5%;
+  }
   
   /* Reset navbar override if it leaks */
   &.navbar {
@@ -29,10 +33,14 @@
 .header-logo {
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
-  font-size: 1.4rem;
+  font-size: 1.1rem; /* Shrunk from 1.4rem */
   line-height: 1.1;
   color: white;
   text-transform: none;
+  
+  @media (min-width: 1024px) {
+    font-size: 1.4rem;
+  }
   
   &:hover {
     opacity: 0.9;
@@ -185,10 +193,14 @@
 }
 
 .aprs-logo-svg {
-  height: 48px;
+  height: 36px; /* Shrunk from 48px */
   width: auto;
   fill: white;
   display: block;
+  
+  @media (min-width: 1024px) {
+    height: 48px;
+  }
   
   .cls-1 {
     fill: white !important;

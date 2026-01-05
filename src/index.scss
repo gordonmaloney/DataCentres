@@ -48,7 +48,12 @@ textarea:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+p {
   margin: 0;
 }
 
@@ -105,5 +110,25 @@ button {
 
 .teal-card {
   background-color: var(--accent-teal); 
-  padding: 20px;
+  padding: 15px 10px; 
+  width: 100%;
+
+  @media (min-width: 768px) {
+    padding: 20px;
+    border-radius: 12px;
+  }
+}
+
+.prompts-inner-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.05);
+  width: 100%;
+
+  @media (min-width: 768px) {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
 }

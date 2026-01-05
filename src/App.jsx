@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Landing from './pages/landing/Landing'
 import ObjectPage from './pages/object/Object'
 import EmailMSPs from './pages/email/EmailMSPs'
@@ -10,6 +11,7 @@ import './App.scss'
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="app-container">
         <div className="grid-bg"></div>
         
