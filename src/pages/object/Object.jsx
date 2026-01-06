@@ -19,7 +19,7 @@ export default function ObjectPage() {
               <div style={{ backgroundColor: 'rgba(15, 113, 115, 0.05)', padding: '1.5rem', borderRadius: '12px', borderLeft: '4px solid var(--accent-teal)' }}>
                 <h3 style={{ fontSize: '1.1rem', fontWeight: 800, textTransform: 'uppercase', marginBottom: '0.8rem', color: 'var(--accent-teal)' }}>How it works</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                  Answer a few quick questions on this page (to the right on desktop, or below on mobile) about how the proposed development will affect you. 
+                  Answer a few quick questions on this page about how the proposed development will affect you. 
                 </p>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', marginTop: '0.8rem' }}>
                   We'll use your answers to build a professional, structured planning objection. After filling everything out, you'll be able to review the final draft and send it off.
